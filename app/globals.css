@@ -1,0 +1,185 @@
+:root {
+  --fond: #ffffff;
+  --texte: #1f2328;
+  --discret: #59636e;
+  --accent: #1f4e8c;
+  --trait: #d0d7de;
+  color-scheme: light dark;
+}
+
+/* Mode sombre automatique : moins d'énergie consommée sur les écrans OLED. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #000000;
+    --texte: #e6edf3;
+    --discret: #9198a1;
+    --accent: #79b8ff;
+    --trait: #30363d;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.entete h1 {
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.titre {
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  color: var(--discret);
+  font-size: 0.9rem;
+}
+
+section {
+  margin-top: 1.75rem;
+}
+
+h2 {
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.entree + .entree {
+  margin-top: 0.9rem;
+}
+
+.entree header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 1rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+.periode,
+.detail {
+  color: var(--discret);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.entree ul {
+  margin: 0.3rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.entree p:not(.detail) {
+  margin-top: 0.2rem;
+}
+
+.competences {
+  margin: 0;
+}
+
+.competences div + div {
+  margin-top: 0.4rem;
+}
+
+.competences dt {
+  font-weight: 600;
+  display: inline;
+}
+
+.competences dt::after {
+  content: " : ";
+}
+
+.competences dd {
+  display: inline;
+  margin: 0;
+}
+
+.colonnes {
+  display: grid;
+  gap: 0 2rem;
+}
+
+@media (min-width: 40rem) {
+  .colonnes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--trait);
+  color: var(--discret);
+  font-size: 0.8rem;
+}
+
+/* Version imprimable : pas besoin de générer un PDF à part. */
+@media print {
+  :root {
+    --fond: #fff;
+    --texte: #000;
+    --discret: #444;
+    --accent: #1f4e8c;
+  }
+  main {
+    padding: 0;
+    max-width: none;
+  }
+  footer {
+    display: none;
+  }
+  section,
+  .entree {
+    break-inside: avoid;
+  }
+}
